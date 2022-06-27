@@ -1,0 +1,8 @@
+{
+  "name": "kata21",
+  "version": "1.0.0",
+  "main": "kata21.js",
+  "dependencies": {
+    "prompt-sync": "^4.1.5"
+  }
+}
