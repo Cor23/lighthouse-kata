@@ -5,19 +5,51 @@ const blocksAway = function(directions) {
   let dir = [];
   let steps = [];
 
-  // seperates direction and steps into own arrays.
-  for(let i = 0; i < directions.length; i += 2){
-    dir.push(directions[i]);
+  //seperates array directions into seperate arrays dir, steps.
+  for(let i = 0; i < directions.length; i++){
+    switch(isNaN(directions[i])){
+      case true:
+        dir.push(directions[i]);
+        break;
+      default:
+        steps.push(directions[i]);
+    }
   };
-  for(let j = 1; j < directions.length; j += 2){
-    steps.push(directions[j]);
+//-------------------------------------------------------------//
+  for(let j = 0; j < steps.length; j++){
+  //NORTH
+    if(facingDir === compass[0]){
+      switch(dir[j]){
+        case "right":
+          facingDir = compass[1]
+          output["east"] = +steps[j];
+          break;
+        case "left":
+          facingDir = compass[3];
+          output["east"] = -steps[j];
+          break;
+      }
+    };
+  //EAST
+    if(facingDir === compass[1]){
+      switch(dir[j]){
+
+      }
+    };
+  //SOUTH
+    if(facingDir === compass[2]){
+      switch(dir[j]){
+
+      }
+    };
+  //WEST
+    if(facingDir === compass[3]){
+      switch(dir[j]){
+
+      }
+    };
+    
   };
-
-
-
-
-  
-
 //-------------------------------------------------------------//
   console.log(dir);
   console.log(steps);
