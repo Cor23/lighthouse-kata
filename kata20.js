@@ -15,23 +15,68 @@ const blocksAway = function(directions) {
     }
   };
 //sets starting direction.
-switch(dir[0]){
-  case 'right':
-    facingDir = 'east';
-    break;
-  case 'left':
-    facingDir = 'north';
-    break;
-};
+  switch(dir[0]){
+    case 'right':
+      facingDir = 'north';
+      break;
+    case 'left':
+      facingDir = 'east';
+      break;
+  };
 //-------------------------------------------------------------//
-  
+  for(let j = 0; j < steps.length;){
+    if(facingDir === 'north'){
+      if(dir[j] === 'right'){
+        facingDir = 'east';
+        output['east'] += steps[j];
+        j++;
+      } else if(dir[j] === 'left'){
+        facingDir = 'west';
+        output['east'] -= steps[j];
+        j++;
+      }
+    }
+
+    if(facingDir === 'east'){
+      if(dir[j] === 'right'){
+        facingDir = 'south';
+        output['north'] -= steps[j];
+        j++
+      } else if(dir[j] === 'left'){
+        facingDir = 'north';
+        output['north'] += steps[j];
+        j++
+      }
+    }
+
+    if(facingDir === 'south'){
+      if(dir[j] === 'right'){
+        facingDir = 'west';
+        output['east'] -= steps[j];
+        j++
+      } else if(dir[j] === 'left'){
+        facingDir = 'east';
+        output['east'] += steps[j];
+        j++
+      }
+    }
+
+    if(facingDir === 'west'){
+      if(dir[j] === 'right'){
+        facingDir = 'north';
+        output['north'] += steps[j];
+        j++
+      } else if(dir[j] === 'left'){
+        facingDir = 'south';
+        output['north'] -= steps[j];
+        j++
+      }
+    }
+  };
 //-------------------------------------------------------------//
-  console.log(facingDir)
-  console.log(dir);
-  console.log(steps);
   return output;
 };
 
 console.log(blocksAway(["right", 2, "left", 3, "left", 1]));
-// console.log(blocksAway(["left", 1, "right", 1, "left", 1, "right", 1, "left", 1, "right", 1]));
-// console.log(blocksAway(["left", 3, "right", 1, "right", 3, "right", 1]));
+console.log(blocksAway(["left", 1, "right", 1, "left", 1, "right", 1, "left", 1, "right", 1]));
+console.log(blocksAway(["left", 3, "right", 1, "right", 3, "right", 1]));
