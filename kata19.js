@@ -11,7 +11,6 @@ let generateBoard = function(whiteQueen, blackQueen){
       }
     }
   }
-  console.table(chessBoard);
   return chessBoard;
 };
 
@@ -28,7 +27,7 @@ let queenThreat = function(chessBoard){
   let wQ = queenPosition[0];
   let bQ = queenPosition[1];
   
-  if(wQ[0] === bQ[0] || wQ[1] === bQ[1]){
+  if(wQ[0] === bQ[0] || wQ[1] === bQ[1] || Math.abs(wQ[0] - bQ[0]) === Math.abs(wQ[1] - bQ[1])){
     return true;
   } else {
     return false;
@@ -36,8 +35,8 @@ let queenThreat = function(chessBoard){
 
 };
 
-let whiteQueen = [0, 5];
-let blackQueen = [5, 0];
+let whiteQueen = [0, 0];
+let blackQueen = [5, 7];
 let generatedBoard = generateBoard(whiteQueen, blackQueen);
 console.log(generatedBoard);
 console.log(queenThreat(generatedBoard));
